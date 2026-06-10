@@ -1,0 +1,14 @@
+# docker-compose.yml
+version: "3.9"
+
+services:
+  minilang:
+    build: .
+    container_name: minilang-compiler
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    # Para desenvolvimento: monta o código como volume (hot-reload)
+    volumes:
+      - ./compilador.py:/app/compilador.py
+      - ./app.py:/app/app.py
